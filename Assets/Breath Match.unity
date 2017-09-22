@@ -381,7 +381,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Match the size of inflating balloon with your breathing pressure. \nExpand
-    the ballon by exhale and inhale with air.\n\nBlow into mouth piece to continue"
+    the balloon by exhale and inhale with air.\n\nBlow into mouth piece to continue"
 --- !u!222 &141628092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -520,8 +520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capacity: 5
-  fillRate: 0.1
-  deflateRate: 0.1
+  fillRate: 0.4
+  deflateRate: 0
   inhalePauseTime: 1.5
   exhalePauseTime: 1
 --- !u!4 &253957520 stripped

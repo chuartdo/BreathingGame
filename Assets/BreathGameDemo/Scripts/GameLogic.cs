@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour {
 	GameObject menu;
+	public GameObject bonusGame;
 	// Use this for initialization
 	bool waitForInput = true;
+	public static bool isBonusGame = false;
     static int score = 0;
 
 	GameObject player, lung;
@@ -28,6 +30,7 @@ public class GameLogic : MonoBehaviour {
 				waitForInput = false;
 				StartGame ();
 			}
+
 	}
 
 	public void StartGame() {
@@ -47,7 +50,6 @@ public class GameLogic : MonoBehaviour {
 		}
 	  // no points
 
-
 	}
 
 	// UI functions
@@ -56,10 +58,27 @@ public class GameLogic : MonoBehaviour {
 		score += value;
 		if (_instance.scoreUI != null)
 			_instance.scoreUI.text = score.ToString();
+
+		if ( score > 5) {
+			_instance.activateBonusGame(true);
+		}
+		if (score > 15) {
+			_instance.activateBonusGame(false);
+
+		}
+			
 	}
 
 	public void WaitInput() {
 		waitForInput = true;
+	}
+
+	void activateBonusGame(bool active) {
+	    isBonusGame = active;
+		if (bonusGame != null)
+			bonusGame.SetActive(active);
+		player.SetActive(!active);
+		lung.SetActive(!active);
 	}
 
 }

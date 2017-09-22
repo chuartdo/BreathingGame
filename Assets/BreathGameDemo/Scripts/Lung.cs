@@ -19,6 +19,11 @@ public class Lung : Balloon {
 	void Start () {
 		StartCoroutine(animateBreath());
 	}
+
+	void OnEnable() {
+		StartCoroutine(animateBreath());
+
+	}
 		
 	void Update () {		 
 		currentVolume = transform.localScale.magnitude;	 
