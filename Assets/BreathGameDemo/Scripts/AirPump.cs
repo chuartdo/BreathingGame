@@ -19,9 +19,7 @@ public class AirPump : MonoBehaviour {
 	}
 
 	public void createNewBalloon() {
-		count += 1;
-		if (scoreUI != null)
-			scoreUI.text = count.ToString();
+		GameLogic.AddScore(1);
 		GameObject balloon = Instantiate(pumpItem,transform.position,transform.rotation);
 		balloon.transform.parent = transform;
 		balloon.GetComponent<Renderer>().material.color = balloonColor[Random.Range(0,5)];
