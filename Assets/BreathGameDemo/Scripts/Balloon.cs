@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour {
 
-	public float capacity = 5;
-	public float fillRate = 0.1f;
-	public float deflateRate = 0.01f;
+	public float capacity;
+	public float fillRate;
+	public float deflateRate;
 
-	bool isPopped = false;
+	bool isPopped;
 
 	protected float volume = 1;
 	protected float currentVolume = 1;

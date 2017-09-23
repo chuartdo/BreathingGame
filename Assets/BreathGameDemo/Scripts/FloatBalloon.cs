@@ -9,25 +9,20 @@ using UnityEngine;
 
 public class FloatBalloon : Balloon { 
 
-
 	public bool canFloat = true;
-
 	bool isPopped = false;
-
-
 	float randomPos;
-
+	float recycleHeight = 15f;
+	float minCapacity;
 
 	void Start () {
 		randomPos = Random.Range(-4f,4f);
-	 
+	     minCapacity = capacity * 1.5f ;
 	}
 
-	float offsetDistance = 15f;
 	void Update () {
 		if (!isPopped) {
 			currentVolume = transform.localScale.magnitude;
-			float minCapacity = capacity * 2;
 
 			/*
 			if (Input.GetMouseButtonDown(0))
@@ -37,31 +32,37 @@ public class FloatBalloon : Balloon {
 			// slowly deflate balloon if no continous pressure applied
 			if (deflateRate > 0) { 
 				if (  BleController.x1 > 0.1f)
-					volume +=  BleController.x1 * fillRate ; //rate
+					inflate( BleController.x1 * fillRate ) ; 
 
 				if (volume < minCapacity && volume > 1f)
-					volume -= deflateRate;
+					deflate( deflateRate );
 			} else
-				volume +=  BleController.x1 * fillRate ; 
+				inflate(  BleController.x1 * fillRate ) ; 
 
-			volume = Mathf.Clamp (volume, 0.5f, minCapacity);
+			volume = Mathf.Clamp (volume, 0.5f, minCapacity  );
 
-			if (volume < minCapacity )
-				transform.localScale *= 1+  (volume - currentVolume) * Time.deltaTime;
-			else {
-				if (canFloat) {
+			if ( canFloat) {   
+				
+				if (volume < minCapacity )
+					transform.localScale *= 1+  (volume - currentVolume) * Time.deltaTime;
+				else {
 					isPopped = true;
 					SendMessageUpwards ("createNewBalloon");
 					transform.parent = null;
-				}
+	 			}
+
+			} else {   
+				if (currentVolume < minCapacity )
+					transform.localScale *= 1+  (volume - currentVolume) * Time.deltaTime;
 			}
 
-		} else {
+		} else {  
+			// Float the balloon in random direction and recycle after reaching height off screen
 			transform.Translate(new Vector3(
 				randomPos * 0.3f *Time.deltaTime,
-				offsetDistance * 0.3f *Time.deltaTime, 
+				recycleHeight * 0.3f *Time.deltaTime, 
 				0));
-			if (transform.position.y > offsetDistance) {
+			if (transform.position.y > recycleHeight) {
 				Destroy(gameObject);
 			}
 		}
