@@ -8,8 +8,6 @@ public class Balloon : MonoBehaviour {
 	public float fillRate;
 	public float deflateRate;
 
-	bool isPopped;
-
 	protected float volume = 1;
 	protected float currentVolume = 1;
 
@@ -21,4 +19,6 @@ public class Balloon : MonoBehaviour {
 		volume -= amount;
 	}
 
+	public virtual void pop() {
+	}
 }

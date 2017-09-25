@@ -12,9 +12,9 @@ public class FloatBalloon : Balloon {
 	public bool canFloat = true;
 	bool isPopped = false;
 	float randomPos;
-	float recycleHeight = 15f;
+	float recycleHeight = 155f;
 	float minCapacity;
-
+ 
 	void Start () {
 		randomPos = Random.Range(-4f,4f);
 	     minCapacity = capacity * 1.5f ;
@@ -63,9 +63,13 @@ public class FloatBalloon : Balloon {
 				recycleHeight * 0.3f *Time.deltaTime, 
 				0));
 			if (transform.position.y > recycleHeight) {
-				Destroy(gameObject);
+				pop();
 			}
 		}
 
+	}
+
+	void pop() {
+		Destroy(gameObject);
 	}
 }

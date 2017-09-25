@@ -6,15 +6,22 @@ using UnityEngine.UI;
 public class GameLogic : MonoBehaviour {
 	GameObject menu;
 	public GameObject bonusGame;
- 	bool waitForInput = true;
-	public static bool isBonusGame = false;
-    static int score = 0;
 
-	GameObject player, syncObject;
+	public static bool isBonusGame = false;
 	public Text scoreUI;
 	public float SyncTolerance = 0.3f;
-	static GameLogic _instance;
+	public float BreathSyncGameTime = 30f;
+	public float BlowBalloonGameTime = 10f;
 
+
+	public enum Game {SyncBreath=0, BlowBalloon=1, ShootBallon=2};
+	public int gameMode = 1;
+
+    static int score = 0;
+	bool waitForInput = true;
+	GameObject player, syncObject;
+
+	static GameLogic _instance;
 
 	void Awake() {
 		if (_instance == null)
@@ -23,10 +30,11 @@ public class GameLogic : MonoBehaviour {
 
 	void Start () {
 		menu = GameObject.Find ("StartMenu");
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.Find("PlayerBalloon");
 		syncObject = GameObject.Find("SyncBalloon");
 		if (bonusGame != null)
 			bonusGame.SetActive(false);
+		ActivateBonusGame((Game)gameMode);
 	}
 	
 	void Update () {
@@ -68,19 +76,17 @@ public class GameLogic : MonoBehaviour {
 		if (scoreUI != null)
 			scoreUI.text = score.ToString();
 
-		if ( score > 5) {
+//		if ( score > 5) {
 			if ( remainingTime <= 0) {
-				// toggle game modes
-				isBonusGame=!isBonusGame;
-				ActivateBonusGame(isBonusGame);
-				StartCoroutine(Countdown(isBonusGame?10f:30f));
+				CycleThroughhGames();
+				
 			}
-		}
+//		}
 
 	}
 
 	float remainingTime;
-	public IEnumerator Countdown(float countdownSeconds = 10f)
+	public IEnumerator CountDown(float countdownSeconds = 10f)
 	{
 		remainingTime = countdownSeconds;
 		while (remainingTime > 0)
@@ -97,15 +103,47 @@ public class GameLogic : MonoBehaviour {
 		waitForInput = true;
 	}
 
-	void ActivateBonusGame(bool active) {
- 
-		// disable sync game
-		player.SetActive(!active);
-		syncObject.SetActive(!active);
-	
 
-		if (bonusGame != null)
-			bonusGame.SetActive(active);
+	void CycleThroughhGames() {
+ 		if ((int)gameMode > 2)
+			gameMode = 0;
+		else 
+			gameMode += 1;
+		ActivateBonusGame( (Game)gameMode  ) ;
+
+	}
+
+	// Activate / deactivate different game items based on game mode
+	void ActivateBonusGame(Game gameMode) {
+
+	
+		float gameTime = 10f;
+
+		switch (gameMode) {
+
+			case Game.SyncBreath:
+				player.SetActive(true);
+				syncObject.SetActive(true);
+				bonusGame.SetActive(false);
+				gameTime = BlowBalloonGameTime;
+				break;
+			
+			case Game.BlowBalloon:
+				player.SetActive(false);
+				syncObject.SetActive(false);
+				bonusGame.SetActive(true);
+				gameTime = BlowBalloonGameTime;
+				break;
+
+			case Game.ShootBallon:
+				player.SetActive(false);
+				syncObject.SetActive(false);
+			    bonusGame.SetActive(true);
+				break;
+		}
+			
+		StartCoroutine(CountDown( gameTime )); 
+
 	}
 	
 

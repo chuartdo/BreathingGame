@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 125b25b9ca00e284f9bab7c18df66479
-timeCreated: 1502857786
+timeCreated: 1506301587
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -177,12 +177,12 @@ SubstanceImporter:
       aniso: 1
       wrapMode: 0
     textureAssignments:
-    - shaderProp: _BumpMap
-      material: {instanceID: 0}
-      baseUID: 3475767477
     - shaderProp: _MainTex
       material: {instanceID: 0}
       baseUID: 3467307528
+    - shaderProp: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 3475767477
     - shaderProp: _EmissionMap
       material: {instanceID: 0}
       baseUID: 3475767479
@@ -204,7 +204,7 @@ SubstanceImporter:
     prototypeName: shapeRing
     shaderName: 
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: 
+    shaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
     renderQueue: -1
     lightmapFlags: 5
     inputs:
@@ -281,7 +281,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 1, y: 1}
+      scale: {x: 8, y: 5.42}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -371,12 +371,12 @@ SubstanceImporter:
       aniso: 1
       wrapMode: 0
     textureAssignments:
-    - shaderProp: _BumpMap
-      material: {instanceID: 0}
-      baseUID: 3475767477
     - shaderProp: _MainTex
       material: {instanceID: 0}
       baseUID: 3467307528
+    - shaderProp: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 3475767477
     - shaderProp: _EmissionMap
       material: {instanceID: 0}
       baseUID: 3475767479
@@ -398,7 +398,7 @@ SubstanceImporter:
     prototypeName: shapeRing
     shaderName: 
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: 
+    shaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
     renderQueue: -1
     lightmapFlags: 5
     inputs:
@@ -475,7 +475,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 1, y: 1}
+      scale: {x: 100, y: 100}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -484,7 +484,7 @@ SubstanceImporter:
       texEnvs:
       - _BumpMap:
           texture: {instanceID: 0}
-          scale: {x: 1, y: 1}
+          scale: {x: 100, y: 100}
           offset: {x: 0, y: 0}
       - _DetailAlbedoMap:
           texture: {instanceID: 0}
@@ -500,15 +500,15 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _EmissionMap:
           texture: {instanceID: 0}
-          scale: {x: 1, y: 1}
+          scale: {x: 100, y: 100}
           offset: {x: 0, y: 0}
       - _MainTex:
           texture: {instanceID: 0}
-          scale: {x: 1, y: 1}
+          scale: {x: 100, y: 100}
           offset: {x: 0, y: 0}
       - _MetallicGlossMap:
           texture: {instanceID: 0}
-          scale: {x: 1, y: 1}
+          scale: {x: 100, y: 100}
           offset: {x: 0, y: 0}
       - _OcclusionMap:
           texture: {instanceID: 0}
@@ -516,7 +516,7 @@ SubstanceImporter:
           offset: {x: 0, y: 0}
       - _ParallaxMap:
           texture: {instanceID: 0}
-          scale: {x: 1, y: 1}
+          scale: {x: 100, y: 100}
           offset: {x: 0, y: 0}
       floats:
       - _BumpScale: 1
@@ -565,12 +565,12 @@ SubstanceImporter:
       aniso: 1
       wrapMode: 0
     textureAssignments:
-    - shaderProp: _BumpMap
-      material: {instanceID: 0}
-      baseUID: 3475767477
     - shaderProp: _MainTex
       material: {instanceID: 0}
       baseUID: 3467307528
+    - shaderProp: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 3475767477
     - shaderProp: _EmissionMap
       material: {instanceID: 0}
       baseUID: 3475767479
@@ -759,12 +759,12 @@ SubstanceImporter:
       aniso: 1
       wrapMode: 0
     textureAssignments:
-    - shaderProp: _BumpMap
-      material: {instanceID: 0}
-      baseUID: 3475767477
     - shaderProp: _MainTex
       material: {instanceID: 0}
       baseUID: 3467307528
+    - shaderProp: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 3475767477
     - shaderProp: _EmissionMap
       material: {instanceID: 0}
       baseUID: 3475767479
