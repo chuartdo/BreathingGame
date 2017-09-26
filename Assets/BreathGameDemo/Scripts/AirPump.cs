@@ -8,9 +8,7 @@ using UnityEngine.UI;
 
 public class AirPump : MonoBehaviour {
 	public GameObject pumpItem;
-	public int count = 0;
-	public Text scoreUI;
-
+  
     Color[] balloonColor = { Color.blue, Color.yellow, Color.red, Color.green, Color.cyan, Color.magenta }; 
 
 	 
@@ -20,10 +18,15 @@ public class AirPump : MonoBehaviour {
 
 	public void createNewBalloon() {
 		GameLogic.AddScore(1);
+		createBalloon();
+	}
+
+	public virtual GameObject createBalloon() {
 		GameObject balloon = Instantiate(pumpItem,transform.position,transform.rotation);
 		balloon.transform.parent = transform;
 		balloon.GetComponent<Renderer>().material.color = balloonColor[Random.Range(0,5)];
 		balloon.GetComponent<Balloon>().capacity= Random.Range(5,8);
+		return balloon;
 	}
 
 }

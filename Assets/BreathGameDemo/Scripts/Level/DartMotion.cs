@@ -20,10 +20,9 @@ public class DartMotion: MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision collision) {
-		if (tag == "Recycle") {
-			if (collision.relativeVelocity.magnitude > 2)
+		 
 				Destroy(this.gameObject);
-		}
+		 
 	}
 
 

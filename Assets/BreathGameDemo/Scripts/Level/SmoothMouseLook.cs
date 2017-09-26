@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR_WIN
 
 [AddComponentMenu("Camera-Control/Smooth Mouse Look")]
 public class SmoothMouseLook : MonoBehaviour {
@@ -135,3 +136,4 @@ public class SmoothMouseLook : MonoBehaviour {
 		return Mathf.Clamp (angle, min, max);
 	}
 }
+#endif

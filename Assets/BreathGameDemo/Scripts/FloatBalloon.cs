@@ -41,6 +41,9 @@ public class FloatBalloon : Balloon {
 
 			volume = Mathf.Clamp (volume, 0.5f, minCapacity  );
 
+			if (fillRate <=0)
+				return;
+			
 			if ( canFloat) {   
 				
 				if (volume < minCapacity )
