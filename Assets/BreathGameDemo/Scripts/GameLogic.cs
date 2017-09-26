@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameLogic : MonoBehaviour {
 	GameObject menu;
 	public GameObject bonusGame;
+	public GameObject shootBalloon;
 
 	public static bool isBonusGame = false;
 	public Text scoreUI;
@@ -19,9 +20,12 @@ public class GameLogic : MonoBehaviour {
 
     static int score = 0;
 	bool waitForInput = true;
-	GameObject player, syncObject;
+	bool isGameActive = false;
+	public GameObject playerCamera, player, syncObject;
 
 	static GameLogic _instance;
+
+	Vector3 originalPlayerPosition;
 
 	void Awake() {
 		if (_instance == null)
@@ -30,11 +34,11 @@ public class GameLogic : MonoBehaviour {
 
 	void Start () {
 		menu = GameObject.Find ("StartMenu");
-		player = GameObject.Find("PlayerBalloon");
-		syncObject = GameObject.Find("SyncBalloon");
+		//player = GameObject.Find("PlayerBalloon");
+		//syncObject = GameObject.Find("SyncBalloon");
 		if (bonusGame != null)
 			bonusGame.SetActive(false);
-		ActivateBonusGame((Game)gameMode);
+		originalPlayerPosition = playerCamera.transform.position;
 	}
 	
 	void Update () {
@@ -43,18 +47,27 @@ public class GameLogic : MonoBehaviour {
 				waitForInput = false;
 				StartGame ();
 			}
+
+		if ( isGameActive && remainingTime <= 0) {
+			CycleThroughhGames();
+		}
 	}
 
 	public void StartGame() {
 		// Hide menu
 		if (menu != null)
 			menu.SetActive (false);
+		isGameActive = true;
+		ActivateBonusGame((Game)gameMode);
+
 	}
 
 	// Sync Game logic
 		
 	//Check if player matches the approxmimate size of the reference balloon at each check sync point
 	public void CheckSync() {
+		if (!isGameActive)
+			return;
 		float difference = 
 			syncObject.transform.localScale.x - player.transform.localScale.x;
 		
@@ -77,10 +90,7 @@ public class GameLogic : MonoBehaviour {
 			scoreUI.text = score.ToString();
 
 //		if ( score > 5) {
-			if ( remainingTime <= 0) {
-				CycleThroughhGames();
-				
-			}
+			
 //		}
 
 	}
@@ -116,34 +126,44 @@ public class GameLogic : MonoBehaviour {
 	// Activate / deactivate different game items based on game mode
 	void ActivateBonusGame(Game gameMode) {
 
-	
 		float gameTime = 10f;
-
+		string gameTitle = "";
+		playerCamera.transform.position = originalPlayerPosition;
+			
 		switch (gameMode) {
 
 			case Game.SyncBreath:
 				player.SetActive(true);
 				syncObject.SetActive(true);
 				bonusGame.SetActive(false);
-				gameTime = BlowBalloonGameTime;
+				shootBalloon.SetActive(false);
+				gameTime = BreathSyncGameTime;
+				gameTitle = "Sync Breath";
 				break;
 			
 			case Game.BlowBalloon:
 				player.SetActive(false);
 				syncObject.SetActive(false);
 				bonusGame.SetActive(true);
+				shootBalloon.SetActive(false);
+
 				gameTime = BlowBalloonGameTime;
+				gameTitle = "Blow Balloon";
 				break;
 
 			case Game.ShootBallon:
+				playerCamera.transform.Translate(new Vector3(0,4,0));
 				player.SetActive(false);
 				syncObject.SetActive(false);
-			    bonusGame.SetActive(true);
+			    bonusGame.SetActive(false);
+				shootBalloon.SetActive(true);
+				gameTitle = "Shoot Balloon";
+				gameTime = 30;
 				break;
 		}
 			
 		StartCoroutine(CountDown( gameTime )); 
-
+		DebugText.show(gameTitle,1);
 	}
 	
 

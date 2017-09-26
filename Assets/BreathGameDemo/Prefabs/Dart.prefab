@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114676501760413918}
   m_Layer: 0
   m_Name: Dart
-  m_TagString: Recycle
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 300
-  target: {fileID: 0}
 --- !u!135 &135619959302899436
 SphereCollider:
   m_ObjectHideFlags: 1

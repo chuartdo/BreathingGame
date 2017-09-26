@@ -114,7 +114,7 @@ public class BleController : MonoBehaviour
 			}
 			*/
 				
-			DebugText.show ("Ps: "+x1 ,1);
+			DebugText.show ("Ps: "+x1 ,2);
 
 		} else 
 #endif

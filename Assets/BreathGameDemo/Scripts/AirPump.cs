@@ -23,7 +23,7 @@ public class AirPump : MonoBehaviour {
 		GameObject balloon = Instantiate(pumpItem,transform.position,transform.rotation);
 		balloon.transform.parent = transform;
 		balloon.GetComponent<Renderer>().material.color = balloonColor[Random.Range(0,5)];
-		balloon.GetComponent<Balloon>().capacity= Random.Range(2,5);
+		balloon.GetComponent<Balloon>().capacity= Random.Range(5,8);
 	}
 
 }

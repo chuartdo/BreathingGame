@@ -1,23 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DebugText : MonoBehaviour {
 	public int id = 0;
-    TextMesh textMesh;
+    Text textMesh;
     static DebugText _instance;
-	static TextMesh[] texts = new TextMesh[5];
+	static Text[] texts = new Text[5];
 
 
     void Awake()
     {
         if (_instance == null)
             _instance = this;
-		textMesh = GetComponent<TextMesh>();
+		textMesh = GetComponent<Text>();
     }
 
     void Start () {
-        textMesh = GetComponent<TextMesh>();
+        textMesh = GetComponent<Text>();
 		texts[id] = textMesh;
     }
 

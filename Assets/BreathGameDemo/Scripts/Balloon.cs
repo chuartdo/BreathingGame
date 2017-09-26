@@ -7,6 +7,7 @@ public class Balloon : MonoBehaviour {
 	public float capacity;
 	public float fillRate;
 	public float deflateRate;
+	public Color color;
 
 	protected float volume = 1;
 	protected float currentVolume = 1;

@@ -18,6 +18,8 @@ public class SyncBalloon : Balloon {
 	public float exhalePauseTime = 0.5f;
    
 	void Start () {
+		GetComponent<Renderer>().material.color = Color.cyan;
+
 		StartCoroutine(animateBreath());
 	}
 

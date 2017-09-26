@@ -12,7 +12,7 @@ public class FloatBalloon : Balloon {
 	public bool canFloat = true;
 	bool isPopped = false;
 	float randomPos;
-	float recycleHeight = 155f;
+	float recycleHeight = 25f;
 	float minCapacity;
  
 	void Start () {
@@ -47,7 +47,7 @@ public class FloatBalloon : Balloon {
 					transform.localScale *= 1+  (volume - currentVolume) * Time.deltaTime;
 				else {
 					isPopped = true;
-					SendMessageUpwards ("createNewBalloon");
+					SendMessageUpwards ("createNewBalloon",SendMessageOptions.DontRequireReceiver);
 					transform.parent = null;
 	 			}
 
@@ -72,4 +72,14 @@ public class FloatBalloon : Balloon {
 	void pop() {
 		Destroy(gameObject);
 	}
+
+
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Player") {
+			pop();
+			GameLogic.AddScore(3);
+		}
+	}
+
+
 }
