@@ -12,15 +12,15 @@ public class BalloonPlacer : AirPump {
  
  	public int maxCount;
 	 
-	void Start () {
+	void OnEnable () {
 
-		// calculate how many current balloons 
+		// calculate existing balloons 
 		int count = transform.childCount;
 		if (randomOffset == Vector3.zero) {
 			randomOffset = new Vector3(-10,-4,-3);
 		}
 
-		for (int i=count; i<maxCount; i++) {
+		for (int i=count; i < maxCount; i++) {
 			GameObject balloon = createBalloon();
 			balloon.transform.parent = spawnLoc.transform;
 			balloon.transform.Translate(

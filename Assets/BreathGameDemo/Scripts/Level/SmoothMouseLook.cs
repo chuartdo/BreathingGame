@@ -32,8 +32,8 @@ public class SmoothMouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-		if (!Input.GetMouseButton (1)) // Right click activate mouse
-			return;
+		//if (!Input.GetMouseButton (1)) // Right click activate mouse
+		//	return;
 		if (axes == RotationAxes.MouseXAndY)
 		{			
 			rotAverageY = 0f;

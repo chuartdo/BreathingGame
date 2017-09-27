@@ -17,17 +17,21 @@ public class DartShooter : MonoBehaviour {
 	}
 
 	void Update() {
-		if (BleController.x1 < -0.1f)
-			isLoaded = true;
-		if(Input.GetMouseButtonDown(0)) {
-			ShootDart();
-		}
+		
 		#if UNITY_ANDROID
 
-		#else
+		if (BleController.x1 < -0.1f)
+			isLoaded = true;
 
-
+		if (BleController.x1 > 0.3f)
+			ShootDart();
 		#endif
+		
+		if(Input.GetMouseButtonDown(0)) {
+			isLoaded = true;
+			ShootDart();
+		}
+
 	}
 
 	public void ShootDart() {

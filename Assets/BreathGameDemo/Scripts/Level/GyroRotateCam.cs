@@ -9,7 +9,7 @@ public class GyroRotateCam : MonoBehaviour {
 		}
 
 		void Update ()  {
-		   transform.Rotate (0, -Input.gyro.rotationRateUnbiased.y, 0);
+		transform.Rotate (Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
 		}
 }
 

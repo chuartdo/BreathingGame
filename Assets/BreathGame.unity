@@ -376,7 +376,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 364.9, y: 258}
+  m_SizeDelta: {x: 494.41, y: 339.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141628090
 MonoBehaviour:
@@ -424,8 +424,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Match the size of inflating balloon with your breathing pressure. \nExpand
-    the balloon by exhale and inhale with air.\n\nBlow into mouth piece to continue"
+  m_Text: "<b>Synchronize Breathing</b>\nMatch the size of inflating balloon with
+    your breathing pressure. \nExpand the balloon by exhale and inhale with air.\n\n<b>Fill
+    the Balloon</b>\nFill as many balloons as you can by breathing hard into the mouth
+    piece\n\n<b>Shoot the Balloon</b>\nPop balloons with darts. Control diretion with
+    gyro. Inhale to reload darts. Control speed with breath.\n\nGame cycles after
+    timer run out\n\n\nBlow into mouth piece to continue"
 --- !u!222 &141628092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -547,6 +551,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &207367013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 207367014}
+  - component: {fileID: 207367017}
+  - component: {fileID: 207367016}
+  - component: {fileID: 207367015}
+  m_Layer: 0
+  m_Name: BackSide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &207367014
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207367013}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 8.041097, y: -7.3, z: -90.2}
+  m_LocalScale: {x: 34.18954, y: 24.70833, z: 15.357536}
+  m_Children: []
+  m_Father: {fileID: 384914832}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &207367015
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207367013}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 1762050800, guid: 125b25b9ca00e284f9bab7c18df66479, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &207367016
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207367013}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &207367017
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207367013}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &253957515 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1498671658299032, guid: e087cd04ed056964495d726f2a66c752,
@@ -992,7 +1080,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1373787476}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -1245,6 +1333,7 @@ Transform:
   - {fileID: 617461254}
   - {fileID: 2004609010}
   - {fileID: 600298165}
+  - {fileID: 207367014}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2304,6 +2393,11 @@ Prefab:
         type: 2}
       propertyPath: m_ReceiveShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54755157453154690, guid: e087cd04ed056964495d726f2a66c752,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4189,13 +4283,13 @@ MonoBehaviour:
   shootBalloon: {fileID: 1791301767}
   scoreUI: {fileID: 1096556475}
   SyncTolerance: 0.3
-  BreathSyncGameTime: 20
+  BreathSyncGameTime: 15
   FillBalloonGameTime: 15
   ShootBalloonGameTime: 20
   playerCamera: {fileID: 74245142}
   playerBall: {fileID: 955895559}
   syncBall: {fileID: 253957515}
-  gameMode: 2
+  gameMode: 0
 --- !u!1 &1377240989
 GameObject:
   m_ObjectHideFlags: 0
@@ -4631,7 +4725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8161765, g: 0.16803634, b: 0.16803634, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4709,7 +4803,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1626283474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 56.4}
+  m_LocalPosition: {x: 0, y: 0, z: 62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2095417552}
@@ -4872,6 +4966,11 @@ Prefab:
     - target: {fileID: 1498671658299032, guid: e087cd04ed056964495d726f2a66c752, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54755157453154690, guid: e087cd04ed056964495d726f2a66c752,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour {
-	GameObject menu;
 	public GameObject fillBalloon;
 	public GameObject shootBalloon;
 
@@ -21,8 +20,12 @@ public class GameLogic : MonoBehaviour {
     static int score = 0;
 	bool waitForInput = true;
 	bool isGameActive = false;
+
 	public GameObject playerCamera, playerBall, syncBall;
+
 	public int gameMode = 1;
+
+	GameObject menu,shooter;
 
 	static GameLogic _instance;
 	Vector3 originalPlayerPosition;
@@ -34,7 +37,7 @@ public class GameLogic : MonoBehaviour {
 
 	void Start () {
 		menu = GameObject.Find ("StartMenu");
- 
+		shooter = GameObject.Find("Shooter");
 		// disable all game mode objects
 		syncBall.SetActive(true);
 		fillBalloon.SetActive(false);
@@ -99,7 +102,7 @@ public class GameLogic : MonoBehaviour {
 		remainingTime = countdownSeconds;
 		while (remainingTime > 0)
 		{
-			DebugText.show("Remain: " + remainingTime);
+			DebugText.show("Time: " + remainingTime);
 			yield return new WaitForSeconds(1.0f);
 			remainingTime--;
 		}
@@ -127,7 +130,7 @@ public class GameLogic : MonoBehaviour {
 		float gameTime = 10f;
 		string gameTitle = "";
 		playerCamera.transform.position = originalPlayerPosition;
-			
+
 		switch (gameMode) {
 
 			case Game.SyncBreath:
@@ -137,6 +140,8 @@ public class GameLogic : MonoBehaviour {
 				shootBalloon.SetActive(false);
 				gameTime = BreathSyncGameTime;
 				gameTitle = "Sync Breath";
+				shooter.SetActive(false);
+
 				break;
 			
 			case Game.FillBalloon:
@@ -144,9 +149,10 @@ public class GameLogic : MonoBehaviour {
 				syncBall.SetActive(false);
 				fillBalloon.SetActive(true);
 				shootBalloon.SetActive(false);
-
 				gameTime = FillBalloonGameTime;
 				gameTitle = "Fill Balloon";
+				shooter.SetActive(false);
+
 				break;
 
 			case Game.ShootBallon:
@@ -157,6 +163,7 @@ public class GameLogic : MonoBehaviour {
 				shootBalloon.SetActive(true);
 				gameTitle = "Shoot Balloon";
 				gameTime = FillBalloonGameTime;
+				shooter.SetActive(true);
 				break;
 
 		}
