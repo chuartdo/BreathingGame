@@ -73,7 +73,13 @@ public class FloatBalloon : Balloon {
 	}
 
 	void pop() {
-		Destroy(gameObject);
+		ParticleSystem explosion = this.gameObject.GetComponentInChildren<ParticleSystem>();
+		if (explosion != null)
+			explosion.Play();
+		this.gameObject.GetComponent<Renderer>().enabled = false;
+
+
+		Destroy(gameObject,2);
 	}
 
 

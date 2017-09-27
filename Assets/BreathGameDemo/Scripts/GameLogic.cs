@@ -24,6 +24,7 @@ public class GameLogic : MonoBehaviour {
 	public GameObject playerCamera, playerBall, syncBall;
 
 	public int gameMode = 1;
+	public bool autoCycleGame = false;
 
 	GameObject menu,shooter;
 
@@ -55,7 +56,15 @@ public class GameLogic : MonoBehaviour {
 			}
 
 		if ( isGameActive && remainingTime <= 0) {
-			CycleThroughhGames();
+			if ( autoCycleGame) 
+				 CycleThroughhGames();
+			 
+		}
+
+		if (!autoCycleGame) {
+			if (Input.GetKeyDown(KeyCode.N)) {
+ 			    CycleThroughhGames();
+			}
 		}
 	}
 
@@ -127,7 +136,7 @@ public class GameLogic : MonoBehaviour {
 	// Activate / deactivate different game items based on game mode
 	void ActivateBonusGame(Game gameMode) {
 
-		float gameTime = 10f;
+		float gameTime = 10;
 		string gameTitle = "";
 		playerCamera.transform.position = originalPlayerPosition;
 

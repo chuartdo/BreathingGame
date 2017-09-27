@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE
 
 [AddComponentMenu("Camera-Control/Smooth Mouse Look")]
 public class SmoothMouseLook : MonoBehaviour {
@@ -32,8 +32,8 @@ public class SmoothMouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-		//if (!Input.GetMouseButton (1)) // Right click activate mouse
-		//	return;
+		if (!Input.GetMouseButton (1)) // Right click activate mouse
+			return;
 		if (axes == RotationAxes.MouseXAndY)
 		{			
 			rotAverageY = 0f;
